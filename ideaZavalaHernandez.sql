@@ -74,3 +74,34 @@ INSERT INTO `PRODUCTOS` (`ID_PRODUCTO`,`NOMBRE`,`DESCRIPCION`,`PRECIO_UNIDAD`,`P
 
 -- Creación de vistas
 
+CREATE VIEW clientes_email AS
+SELECT NOMBRE, EMAIL
+FROM clientes;
+
+CREATE VIEW productos_precio AS
+SELECT NOMBRE, DESCRIPCION, PRECIO_UNIDAD
+FROM productos;
+
+CREATE VIEW productos_proveedor AS
+SELECT NOMBRE, DESCRIPCION, PROVEEDOR
+FROM productos;
+
+CREATE VIEW clientes_direccion AS
+SELECT NOMBRE, DIRECCION
+FROM clientes;
+
+CREATE VIEW clientes_contacto AS
+SELECT NOMBRE, DIRECCION, EMAIL, TELEFONO
+FROM clientes;
+
+SELECT * FROM productos_precio
+WHERE PRECIO_UNIDAD >= 400;
+
+SELECT * FROM productos_proveedor
+WHERE PROVEEDOR = 'CHSUNITYDE';
+
+SELECT * FROM clientes_direccion
+WHERE DIRECCION LIKE '%DEL VALLE%';
+
+SELECT * FROM clientes_contacto
+WHERE EMAIL LIKE '%GMAIL%';
