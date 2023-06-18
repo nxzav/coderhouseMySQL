@@ -105,3 +105,29 @@ WHERE DIRECCION LIKE '%DEL VALLE%';
 
 SELECT * FROM clientes_contacto
 WHERE EMAIL LIKE '%GMAIL%';
+
+-- Uso de funciones
+
+SELECT COUNT(NOMBRE) AS n_nombres
+FROM CLIENTES;
+
+SELECT LOWER(EMAIL) AS c_email
+FROM CLIENTES;
+
+DROP FUNCTION IF EXISTS fn_ver_email;
+
+DELIMITER $$
+CREATE FUNCTION fn_ver_email (f_id_cliente INT)
+
+RETURNS VARCHAR(50)
+DETERMINISTIC
+BEGIN
+DECLARE client_mail VARCHAR(50);
+SET client_mail =
+	(SELECT EMAIL AS CLIENTE_MAIL FROM CLIENTES WHERE ID_CLIENTE = f_id_cliente);
+    
+    RETURN client_mail;
+END $$
+DELIMITER ;
+
+SELECT fn_ver_email (5);
